@@ -86,6 +86,6 @@ impl<I, O> Sink<O> for ReactorScope<I, O> {
     }
 
     fn poll_ready(mut self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<Result<(), Self::Error>> {
-        Pin::new(&mut self.output_sink).poll_flush(cx)
+        Pin::new(&mut self.output_sink).poll_ready(cx)
     }
 }
