@@ -193,7 +193,7 @@ where
             let shim = if self.as_module {
                 format!(r#"import init from '{js_shim_url}';await init();"#)
             } else {
-                format!(r#"importScripts("{js_shim_url}");wasm_bindgen("{wasm_url}");"#)
+                format!(r#"importScripts("{js_shim_url}");wasm_bindgen({{module_or_path: "{wasm_url}"}});"#)
             };
             array.push(&shim.into());
             let opts = BlobPropertyBag::new();
